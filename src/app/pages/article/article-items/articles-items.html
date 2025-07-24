@@ -1,0 +1,10 @@
+<h4>Your Articles</h4>
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">{{ article.title }}</h5>
+        <p class="card-text">{{ article.content }}</p>
+        <button class="btn btn-outline-primary btn-sm" (click)="updateArticle(article)">
+            Edit
+        </button>
+    </div>
+</div>

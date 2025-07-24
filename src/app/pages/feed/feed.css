@@ -1,0 +1,23 @@
+.container {
+    max-width: 800px;
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: 6px;
+}
+
+.input-group {
+    margin-top: 0.5rem;
+}
+
+hr {
+    margin: 1rem 0;
+}
+
+.card {
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+}

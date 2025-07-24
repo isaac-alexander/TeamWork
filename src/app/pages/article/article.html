@@ -1,0 +1,30 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/homepage">TeamWork</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/feed">Feed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/homepage">Home</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Article Form and Articles List -->
+<div class="container mt-5">
+    <app-add-articles (onAddArticle)="addArticle($event)"> </app-add-articles>
+    <hr class="my-5" />
+    <app-articles-items 
+    *ngFor="let article of articles"
+    (emitUpdateArticle)="editArticle(article)" 
+    > </app-articles-items>
+</div>

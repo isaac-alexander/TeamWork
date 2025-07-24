@@ -1,0 +1,16 @@
+.fullscreen-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;       
+  background-color: #f8f9fa; 
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
