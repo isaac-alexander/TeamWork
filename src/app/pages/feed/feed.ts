@@ -27,8 +27,7 @@ export class Feed {
   }
 
 
-  editPost(post: FeedItem) {
-    localStorage.setItem('editingPost', JSON.stringify(post));
-    this.router.navigate(['/post-article']);
+  editPost() {
+    this.router.navigate(['/article']);
   }
 }

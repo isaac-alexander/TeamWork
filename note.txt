@@ -1,0 +1,98 @@
+ Format date properly
+ Add comments to article 
+ Show comments 
+
+Create Gif 
+Convert image to base64 format when the form is submitted
+
+Add comments to Gif
+Show comments 
+
+ Create header component and move to app component 
+ Use ng if to seperate create user 
+Add logout method to header component it should remove user from local storage and navigate to sign-in using localstorage removeitem
+ 
+
+ Article and Gif details component 
+ 
+ 
+ postArticle() {
+    if (!this.article.title || !this.article.content) return;
+
+    this.articleService.postArticle(this.article).subscribe({
+      next: (res: ArticleResponse) => {
+        this.articles.unshift({
+          id: res.data.articleId,
+          title: res.data.title,
+          content: res.data.article
+        });
+        this.article = { title: '', content: '' };
+      },
+      error: (err) => {
+        console.error('Failed to post article:', err);
+      }
+    });
+  }
+
+The ! means "is empty" or "is falsey". if (!this.article.title is empty || !this.article.content is empty) return;
+ 
+postArticle(this.article) sends the article to the server.
+.subscribe({...}) listens for the server's response.
+it means: Once the post request finishes, do something with the result.
+
+this.articles.unshift({ ... }); adds the newly created article to the top of the article list.
+
+this.articles is the array of all articles.
+
+.unshift(...) adds the new article to the start of the list (so newest articles appear first).
+
+this.article = { title: '', content: '' };
+This clears the form after posting.
+It resets the article object back to empty strings.
+This lets the user type in a new article
+
+
+////////////////////////////////////////////////////////
+editArticle(article: Article & { id: number }) {
+    this.article = { title: article.title, content: article.content };
+    this.editingPost = article;
+  }
+
+This method runs when the user clicks the Edit button on an article. It fills the form with that article title and content, so the user can make changes.
+
+editArticle(article: Article & { id: number })
+This defines a method called editArticle..It takes in one article as an argument.
+
+That article has:
+a title (string), a content (string), an id (number)
+
+
+this.article = { title: article.title, content: article.content };
+This line copies the title and content of the article the user wants to edit into the form fields.
+By setting this value, the form is pre-filled with the article’s existing content.
+So now the form becomes editable with the current values of that article.
+
+this.editingPost = article;
+This line stores the full article (including its ID) so you know which article is being edited.
+You’ll use editingPost.id later when saving the changes.
+Without this you wouldn’t know which article to update on the backend.
+
+/////////////////////////////////////////////////////
+
+if (!this.article.title || !this.article.content || !this.editingPost) return;
+If the title or content is empty, or if you're not currently editing anything, it stops the function.
+
+const updated = { ... }
+this creates a new object called updated containing:
+The ID of the article being edited (needed to tell the server which one to update).
+The new title and content from the form.
+
+this.articleService.updateArticle(updated).subscribe({ ... })
+This sends the updated article to your backend/server using the service.
+
+.subscribe() listens for the response:
+
+If it succeeds, next runs.
+
+If it fails, error runs.
+

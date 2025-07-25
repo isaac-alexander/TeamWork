@@ -15,11 +15,11 @@ export class Homepage implements OnInit {
 
 
   ngOnInit() {
-    this.fullName = localStorage.getItem('fullName') || 'User'; // when fullname is not there use User
+    const user = localStorage.getItem('user')
+    const userObject = JSON.parse(user!);
+    this.fullName = userObject.fullName || 'User'; // when fullname is not there use User
 
-    this.isAdmin = localStorage.getItem('jobRole')?.toLowerCase() === 'admin';
+    this.isAdmin = userObject.jobRole.toLowerCase() === 'admin';
   }
 
-
-  constructor() { }
 }

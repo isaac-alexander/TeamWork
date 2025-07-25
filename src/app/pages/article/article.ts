@@ -20,12 +20,15 @@ export class Article {
   articles: articleInterface[] = [];
   editingPost: (articleInterface & { id: number }) | null = null;
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService) {}
 
 
   addArticle(article: articleInterface) {
     this.articleService.postArticle(article).subscribe({
       next: (res: ArticleResponse) => {
+
+        localStorage.setItem('article', JSON.stringify(res.data));
+
         this.articles.push(article);
         alert('Article posted successfully')
       },
@@ -35,19 +38,20 @@ export class Article {
     });
   }
 
-  // editArticle(article: Article & { id: number }) {
-  //   this.article = { title: article.title, content: article.content };
-  //   this.editingPost = article;
-  // }
-
   editArticle(article: articleInterface) {
-    this.articleService.updateArticle(article).subscribe();
+    this.articleService.updateArticle(article).subscribe({
+      next: (res) => {
+        
+        const index = this.articles.findIndex(a => a.id === article.id);
+        if (index !== -1) {
+          this.articles[index] = { ...article };
+        }
+        alert('Article updated successfully');
+      },
+      error: (err) => {
+        console.error('Failed to update article:', err);
+      }
+    });
   }
 
 }
-
-    // const updated = {
-    //   id: this.editingPost.id,
-    //   title: this.article.title,
-    //   content: this.article.content
-    // };

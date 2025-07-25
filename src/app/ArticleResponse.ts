@@ -1,9 +1,9 @@
 export interface ArticleResponse {
     status: string;
     data: {
-        message: string;
+        message?: string;
         articleId: number;
-        createdOn: number;
+        createdOn?: number;
         title: string;
         article: string;
     }

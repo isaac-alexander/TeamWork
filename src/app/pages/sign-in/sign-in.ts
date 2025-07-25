@@ -30,11 +30,9 @@ export class SignIn {
       next: (res) => {
         this.error = '';
 
-        localStorage.setItem('jobRole', res.data.jobRole);
-        localStorage.setItem('fullName', res.data.fullName);
-        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data));
 
-        this.router.navigate(['/homepage']);
+        this.router.navigate(['/feed']);
       },
       error: (err) => {
         this.error = 'invalid email or password';

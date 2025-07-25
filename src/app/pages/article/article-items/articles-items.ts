@@ -16,8 +16,15 @@ export class ArticlesItems {
   content: string = '';
   id!: number;
 
+  
+
+  constructor() {
+    const localArticle = localStorage.getItem('article')
+    const article = JSON.parse(localArticle!);
+  }
 
   updateArticle(article: any) {
+
     const updated = {
       id: this.id,
       title: this.title,
