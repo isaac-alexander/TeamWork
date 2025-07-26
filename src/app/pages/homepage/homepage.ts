@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Header } from '../header/header';
+
 
 @Component({
   selector: 'app-homepage',
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, Header],
   templateUrl: './homepage.html',
   styleUrl: './homepage.css'
 })

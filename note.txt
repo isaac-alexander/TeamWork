@@ -12,6 +12,7 @@ Show comments
  Use ng if to seperate create user 
 Add logout method to header component it should remove user from local storage and navigate to sign-in using localstorage removeitem
  
+ Add signout button/emoji/icon
 
  Article and Gif details component 
  

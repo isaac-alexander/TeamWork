@@ -4,11 +4,14 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FeedItem } from '../../feed-item';
 import { FeedService } from '../../services/feed.service';
+import { AddArticleComments } from '../comments/add-article-comments/add-article-comments';
+import { Header } from '../header/header';
 
 
 @Component({
+  standalone: true,
   selector: 'app-feed',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, AddArticleComments, Header],
   templateUrl: './feed.html',
   styleUrl: './feed.css'
 })

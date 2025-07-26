@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { articleInterface } from '../../../articleInterface';
 
+
+
 @Component({
   selector: 'app-add-articles',
   imports: [CommonModule, FormsModule, RouterModule],
@@ -15,7 +17,7 @@ export class AddArticles {
   id!: number;
   title: string = '';
   content: string = '';
-  article!: articleInterface;
+   
 
   onSubmit() {
     if (!this.title || !this.content) {
@@ -24,7 +26,6 @@ export class AddArticles {
     }
 
     const newArticle = {
-      id: this.id,
       title: this.title,
       content: this.content,
     }

@@ -6,11 +6,12 @@ import { articleInterface } from '../../articleInterface';
 import { ArticleResponse } from '../../ArticleResponse';
 import { ArticleService } from '../../services/article.service';
 import { AddArticles } from "./addArticles/add-articles";
-import { ArticlesItems } from "./article-items/articles-items";
+import { Header } from '../header/header';
+
 
 @Component({
   selector: 'app-article',
-  imports: [CommonModule, FormsModule, RouterModule, AddArticles, ArticlesItems],
+  imports: [CommonModule, FormsModule, RouterModule, AddArticles, Header],
   templateUrl: './article.html',
   styleUrl: './article.css'
 })
@@ -18,12 +19,12 @@ export class Article {
 
   article!: articleInterface;
   articles: articleInterface[] = [];
-  editingPost: (articleInterface & { id: number }) | null = null;
 
-  constructor(private articleService: ArticleService) {}
+  constructor(private articleService: ArticleService) { }
 
 
   addArticle(article: articleInterface) {
+
     this.articleService.postArticle(article).subscribe({
       next: (res: ArticleResponse) => {
 
@@ -41,7 +42,7 @@ export class Article {
   editArticle(article: articleInterface) {
     this.articleService.updateArticle(article).subscribe({
       next: (res) => {
-        
+
         const index = this.articles.findIndex(a => a.id === article.id);
         if (index !== -1) {
           this.articles[index] = { ...article };

@@ -1,0 +1,36 @@
+<nav *ngIf="isAdmin" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/homepage">TeamWork</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Create profile Admin only -->
+                <li class="nav-item" ><a class="nav-link" routerLink="/admin/create-account">Create Employee Profile</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/feed">Feed</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/gif">Post GIF</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/article">Post Article</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav *ngIf="!isAdmin" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/homepage">TeamWork</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" routerLink="/feed">Feed</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/article">Post Article</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/homepage">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
