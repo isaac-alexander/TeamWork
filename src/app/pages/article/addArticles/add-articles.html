@@ -1,17 +1,18 @@
-<h2 class="mt-3 mb-3 font-bold">Post a New Article</h2>
-
-<form (ngSubmit)="onSubmit()" class="mt-3">
+<h2 class="mt-3 mb-3 font-bold ">Post a New Article</h2>
+<div class="card mb-4 shadow-sm rounded-4 bg-info bg-opacity-10 border border-info border-start-0 ">
+<form (ngSubmit)="onSubmit()" class="m-3 ">
     <div class="mb-3">
-        <label class="form-label">Title</label>
+        <label class="form-label fs-4 fw-bold">Title</label>
         <input [(ngModel)]="title" name="title" class="form-control" required />
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Content</label>
+        <label class="form-label fs-4 fw-bold">Content</label>
         <textarea [(ngModel)]="content" name="content" rows="6" class="form-control" required></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary w-100" >
+    <button type="submit" class="btn btn-primary w-100 fs-5" >
         Post Article
     </button>
 </form>
+</div>

@@ -35,6 +35,7 @@ export class AddGifs {
     }
 
     this.onAddGif.emit(newGif);
+    console.log("emit image and title")
 
     this.title = '';
     this.image = '';

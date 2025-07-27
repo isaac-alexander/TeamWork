@@ -5,6 +5,7 @@ import { Homepage } from './pages/homepage/homepage';
 import { Feed } from './pages/feed/feed';
 import { Article } from './pages/article/article';
 import { Gif } from './pages/gif/gif';
+import { ArticleDetails } from './pages/article/article-details/article-details';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -14,4 +15,5 @@ export const routes: Routes = [
     { path: 'feed', component: Feed },
     { path: 'article', component: Article },
     { path: 'gif', component: Gif },
+    { path: 'articleDetails/:id', component: ArticleDetails, title: 'Article Details Page' },
 ];

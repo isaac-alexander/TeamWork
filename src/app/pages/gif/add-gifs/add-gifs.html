@@ -1,16 +1,19 @@
 <div class="container mt-5">
     <h2>Post a GIF</h2>
-    <form (ngSubmit)="postGif()" class="mt-3" action="/action_page.php">
-        <div class="mb-3">
-            <label class="form-label">Title</label>
-            <input [(ngModel)]="title" name="title" class="form-control" required />
-        </div>
+    <div class="card mb-4 shadow-sm rounded-4 bg-info bg-opacity-10 border border-info border-start-0 ">
+        <form (ngSubmit)="postGif()" class="m-3" action="/action_page.php">
+            <div class="mb-3">
+                <label class="form-label fs-4 fw-bold">Title</label>
+                <input [(ngModel)]="title" name="title" class="form-control" required />
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">GIF URL</label>
-            <input [(ngModel)]="image" type="file" (change)="onFileSelected($event)" id="image" name="image" class="form-control"  required />
-        </div>
+            <div class="mb-3">
+                <label class="form-label fs-4 fw-bold">GIF URL</label>
+                <input [(ngModel)]="image" type="file" (change)="onFileSelected($event)" id="image" name="image"
+                    class="form-control" required />
+            </div>
 
-        <button type="submit" class="btn btn-primary">Post GIF</button>
-    </form>
+            <button type="submit" class="btn btn-primary fs-5">Post GIF</button>
+        </form>
+    </div>
 </div>

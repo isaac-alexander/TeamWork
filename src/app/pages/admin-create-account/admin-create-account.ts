@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CreateUserService } from '../../services/create-user.service';
 import { CreateUser } from '../../CreateUser';
+import { Header } from "../header/header";
 
 @Component({
   selector: 'app-admin-create-account',
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, Header],
   templateUrl: './admin-create-account.html',
   styleUrl: './admin-create-account.css'
 })

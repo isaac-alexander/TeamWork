@@ -4,11 +4,8 @@
 <div class="container mt-5">
     <h2 class="mb-4 text-center fw-bold">Latest Posts</h2>
 
-    <div *ngFor="let item of feeds" class="card mb-4 shadow-sm rounded-4 border-0">
+    <div *ngFor="let item of feeds" class="card mb-4 shadow-sm rounded-4 bg-info bg-opacity-10 border border-info border-start-0 ">
         <div class="card-body">
-            <!-- <h5 class="card-title mb-2">
-                     <a [routerLink]="['/article', item.article_id]" class="text-decoration-none text-dark fw-semibold">{{ item.title }}</a>
-                 </h5> -->
 
             <!-- article content -->
             <div *ngIf="item.article" class="mb-3">
@@ -24,7 +21,7 @@
             </div>
             <hr />
 
-            <!-- comments section -->
+            <!-- article comments section -->
             <div>
                 <h6 class="text-muted mb-2"> Comments </h6>
                 <!-- <ul class="list-group mb-3">
@@ -35,13 +32,15 @@
                     <h5 class="card-title mb-3">{{ item.comments }}</h5>
                 </div>
 
-        
-
                 <app-add-article-comments></app-add-article-comments>
 
+                <a type="submit" class="btn btn-primary mt-3" [routerLink]="['/articleDetails', item.article_id]">Article Details</a>
 
             </div>
+            
+        </div>
 
+        <div class="card-body">
             <!-- gif content -->
             <div *ngIf="item.gif" class="mb-3 text-center">
                 <h5 class="card-title mb-2">{{ item.title }}</h5>
@@ -49,10 +48,22 @@
                 <p class="card-text text-primary">{{ item.createdOn }}</p>
             </div>
 
+            <!-- gif comments section -->
+            <!-- <div>
+                <h6 class="text-muted mb-2"> Comments </h6>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item py-2 px-3 border-0" *ngFor="let comment of item.comments"> {{ comment }} </li>
+                </ul>
 
+                <div *ngIf="item.comments" class="mb-3">
+                    <h5 class="card-title mb-3">{{ item.comments }}</h5>
+                </div>
 
+                <app-add-gif-comments></app-add-gif-comments>
 
+                <button type="submit" class="btn btn-primary mt-3" [routerLink]="['/gifDetails', item.gif_id]">Gif Details</button>
 
+            </div> -->
 
         </div>
     </div>

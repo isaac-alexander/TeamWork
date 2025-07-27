@@ -39,12 +39,13 @@ export class ArticleService {
   }
 
 
-  getArticles(): Observable<ArticleResponse> {
+  getArticlesById(id: Number): Observable<ArticleResponse> {
     const user = localStorage.getItem('user')
     const userObject = JSON.parse(user!);
     const token = userObject.token;
     const headers = this.createHttpOptions(token!);
-    return this.http.get<ArticleResponse>(this.apiUrl, headers);
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<ArticleResponse>(url, headers);
   }
 
 
