@@ -4,8 +4,12 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FeedItem } from '../../feed-item';
 import { FeedService } from '../../services/feed.service';
-import { AddArticleComments } from '../comments/add-article-comments/add-article-comments';
 import { Header } from '../header/header';
+import { commentInterface } from '../../commentInterface';
+import { CommentService } from '../../services/comment.service';
+import { CommentResponse } from '../../CommentResponse';
+import { AddArticleComments } from '../article/articleComment/add-article-comments/add-article-comments';
+
 
 
 @Component({
@@ -17,8 +21,13 @@ import { Header } from '../header/header';
 })
 export class Feed {
   feeds: FeedItem[] = [];
+  comment!: commentInterface;
+  comments: commentInterface[] = [];
+  airticle_id!: number;
 
-  constructor(private router: Router, private feedService: FeedService) {
+
+
+  constructor(private router: Router, private feedService: FeedService, private commentService: CommentService) {
     // call feed api endpoitn,set to allfeeds varaible
     this.getFeed();
   }
@@ -26,6 +35,25 @@ export class Feed {
   getFeed() {
     this.feedService.getFeed().subscribe(res => {
       this.feeds = res.data
+    });
+  }
+
+  //The function adds comment
+  addComment(comment: commentInterface) {
+    const localArticle = localStorage.getItem('article')
+    const article = JSON.parse(localArticle!);
+    this.airticle_id = article.articleId;
+
+    this.commentService.postComment(comment, this.airticle_id).subscribe({
+      next: (res: CommentResponse) => {
+
+        this.comments.push(comment);
+        alert('Comment posted successfully')
+      },
+      error: (err) => {
+        console.error(err.message);
+        console.error('Failed to post comment:', err);
+      }
     });
   }
 

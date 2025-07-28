@@ -5,12 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { FeedService } from '../../../services/feed.service';
 import { ArticleService } from '../../../services/article.service';
 import { ArticleResponse } from '../../../ArticleResponse';
-import { AddArticleComments } from "../../comments/add-article-comments/add-article-comments";
+// import { AddArticleComments } from "../../comments/add-article-comments/add-article-comments";
 import { FeedItem } from '../../../feed-item';
 
 @Component({
   selector: 'app-article-details',
-  imports: [CommonModule, RouterModule,AddArticleComments],
+  imports: [CommonModule, RouterModule],
   templateUrl: './article-details.html',
   styleUrl: './article-details.css'
 })
@@ -21,6 +21,8 @@ export class ArticleDetails {
   article!: ArticleResponse ;
   feedItem!: FeedItem[];
   articleId!: number;
+  comment: string = '';
+  comments!: string[];
 
   constructor() {
     this.articleId = Number(this.route.snapshot.params['id']);
