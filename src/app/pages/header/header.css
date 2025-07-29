@@ -1,0 +1,12 @@
+a {
+  text-decoration: none;
+  color: white;
+  padding: 16px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+a:hover {
+  background-color: white;
+  color: black;
+}   
