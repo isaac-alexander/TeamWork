@@ -2,8 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { articleInterface } from '../../../articleInterface';
-
+import { newArticleInterface } from '../../../newArticleInterface';
 
 
 @Component({
@@ -13,7 +12,7 @@ import { articleInterface } from '../../../articleInterface';
   styleUrl: './add-articles.css'
 })
 export class AddArticles {
-  @Output() onAddArticle: EventEmitter<articleInterface> = new EventEmitter();
+  @Output() onAddArticle: EventEmitter<newArticleInterface> = new EventEmitter();
   id!: number;
   title: string = '';
   content: string = '';

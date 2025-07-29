@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+a {
+  text-decoration: none;
+  color: #0566f7;
+  font-size: large;
+  font-weight: 400;
+}
+
+a::after {
+  content: "\203A";
+  margin-left: 5px;
+}
+/* 
+.card [
+
+] */

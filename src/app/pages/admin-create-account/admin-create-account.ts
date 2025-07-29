@@ -28,10 +28,6 @@ export class AdminCreateAccount {
   constructor(private router: Router, private CreateUserService: CreateUserService) { }
 
   createUser() {
-    // if (!this.firstname || !this.lastname || this.email || !this.password || !this.gender || !this.job_role || !this.department || !this.address) {
-    //   alert('All fields are required.');
-    //   return;
-    // }
 
     this.error = '';
     this.success = '';
@@ -42,7 +38,14 @@ export class AdminCreateAccount {
       next: (res) => {
         this.success = 'User Created';
 
-        //clear form
+        this.firstname = ''
+        this.lastname = '';
+        this.email = '';
+        this.password = '';
+        this.gender = '';
+        this.job_role = '';
+        this.department = '';
+        this.address = '';
       },
       error: (err) => {
         this.error = 'Unable to create user';

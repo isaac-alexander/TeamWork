@@ -1,5 +1,12 @@
+import { commentInterface } from "./commentInterface";
+
 export interface articleInterface {
-    id?: number;
+content: any;
+    id?: string;
+    message?: string;
+    articleId?: number;
+    createdOn?: string;
     title: string;
-    content: string;
+    article: string;
+    comments?: commentInterface[];
 }

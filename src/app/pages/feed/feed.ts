@@ -6,29 +6,30 @@ import { FeedItem } from '../../feed-item';
 import { FeedService } from '../../services/feed.service';
 import { Header } from '../header/header';
 import { commentInterface } from '../../commentInterface';
-import { CommentService } from '../../services/comment.service';
-import { CommentResponse } from '../../CommentResponse';
-import { AddArticleComments } from '../article/articleComment/add-article-comments/add-article-comments';
+import { ArticleService } from '../../services/article.service';
 
 
 
 @Component({
   standalone: true,
   selector: 'app-feed',
-  imports: [CommonModule, RouterModule, FormsModule, AddArticleComments, Header],
+  imports: [CommonModule, RouterModule, FormsModule, Header],
   templateUrl: './feed.html',
   styleUrl: './feed.css'
 })
 export class Feed {
   feeds: FeedItem[] = [];
-  comment!: commentInterface;
+  comment!: string;
   comments: commentInterface[] = [];
-  airticle_id!: number;
+  article_id!: number;
+  article!: any;
 
 
 
-  constructor(private router: Router, private feedService: FeedService, private commentService: CommentService) {
-    // call feed api endpoitn,set to allfeeds varaible
+  constructor(private router: Router,
+    private feedService: FeedService,
+    private articleService: ArticleService
+  ) {
     this.getFeed();
   }
 
@@ -38,27 +39,14 @@ export class Feed {
     });
   }
 
-  //The function adds comment
-  addComment(comment: commentInterface) {
-    const localArticle = localStorage.getItem('article')
-    const article = JSON.parse(localArticle!);
-    this.airticle_id = article.articleId;
-
-    this.commentService.postComment(comment, this.airticle_id).subscribe({
-      next: (res: CommentResponse) => {
-
-        this.comments.push(comment);
-        alert('Comment posted successfully')
-      },
-      error: (err) => {
-        console.error(err.message);
-        console.error('Failed to post comment:', err);
-      }
-    });
-  }
-
-
   editPost() {
     this.router.navigate(['/article']);
+  }
+
+  formatDate(value: string) {
+    let myDate = Date.parse(value);
+    const d = new Date(myDate);
+    const standardDate = String(d).substring(0, 25);
+    return standardDate;
   }
 }

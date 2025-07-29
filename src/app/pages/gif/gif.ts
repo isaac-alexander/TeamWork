@@ -28,8 +28,6 @@ export class Gif {
     this.gifService.postGif(gif).subscribe({
       next: (res: GifResponse) => {
 
-        localStorage.setItem('gif', JSON.stringify(res.data));
-
         this.gifs.push(gif);
         alert('Gif posted successfully')
       },

@@ -1,16 +1,31 @@
-    <div class="container">
-<h2 class="mb-4 text-center fw-bold"> ARTICLE</h2>
+<div class="container">
+    <h2 class="mb-4 text-center fw-bold"> ARTICLE</h2>
 
-<div *ngFor="let item of feedItem" class="card mb-4 shadow-sm rounded-4 border-0">
-    <div *ngIf="item.article_id === articleId" class="card-body bg-info bg-opacity-10 border border-info border-start-0 ">
+    <div *ngIf="article"
+        class="card mb-4 p-3 shadow-sm rounded-4 bg-info bg-opacity-10 border border-info border-start-0">
+        <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+        <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+
         <div class="mb-3">
-            <h5 class="card-title mb-2">{{ item.title }}</h5>
-            <p class="card-text text-muted">{{ item.article }}</p>
-            <p class="card-text text-primary">{{ item.createdOn }}</p>
+            <h5 class="card-title mb-2">{{ article.title }}</h5>
+            <p class="card-text text-muted">{{ article.article }}</p>
+            <p class="card-text text-primary">{{ formatDate(article.createdOn!) }}</p>
         </div>
-        <a type="submit" class="btn btn-primary mt-3" [routerLink]="['/feed']">Back To Feeds</a>
 
-        
+        <h6 class="text-muted mb-2"> Comments </h6>
+        <div *ngFor="let comment of article.comments" class="mb-3">
+            <h5 class="card-title mb-3">{{ comment.comment }}</h5>
+        </div>
+        <app-add-article-comments (onAddComment)="addComment($event, article.id!)"> </app-add-article-comments>
+
+        <!-- Edit and Del Buttton  -->
+        <!-- <div class="d-flex justify-content-end gap-2 mt-3 mb-3">
+            <button class="btn btn-sm btn-outline-secondary" (click)="editPost()">Edit</button>
+            <app-delete-article (onDeleteArticle)="deleteArticle(article.id!)"></app-delete-article>
+        </div> -->
+
+        <a class="mt-3" [routerLink]="['/feed'] "> Back To Feeds</a>
+
+
     </div>
-</div>
 </div>

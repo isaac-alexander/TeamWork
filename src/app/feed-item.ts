@@ -1,7 +1,7 @@
 export interface FeedItem {
     article_id?: number;
     gif_id?: number;
-    createdOn: number
+    createdOn: string;
     title: string;
     article?: string;
     gif?: string;

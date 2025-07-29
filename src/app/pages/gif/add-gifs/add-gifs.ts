@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { gifInterface } from '../../../gifInterface';
-import { ReplaySubject } from 'rxjs';
-import { Observable, } from 'rxjs';
 
 @Component({
   selector: 'app-add-gifs',
@@ -17,10 +15,9 @@ export class AddGifs {
   id!: number;
   title: string = '';
   image: string = '';
-  base64Output!: string;
 
   constructor() {
-    
+
   }
 
   postGif() {
@@ -31,32 +28,27 @@ export class AddGifs {
 
     const newGif = {
       title: this.title,
-      image: this.base64Output,
+      image: this.image,
     }
-
-    this.onAddGif.emit(newGif);
-    console.log("emit image and title")
 
     this.title = '';
     this.image = '';
 
   }
 
-  //to base64 function 
-  onFileSelected(event: any): void {
-    this.convertFile(event.target.files[0]).subscribe(base64 => {
-      this.base64Output = base64;
-      console.log(this.base64Output);
-      
-    });
-  }
 
-  convertFile(file: File): Observable<string> {
-    const result = new ReplaySubject<string>(1);
+  onFileSelected(event: any) {
+
+    const file: Blob = event.target.files[0];
     const reader = new FileReader();
-    reader.readAsArrayBuffer(file);
-    reader.onload = (event) => result.next(btoa(event.target!.result!.toString()));
-    return result;
+    reader.onload = (e) => {
+      const base64String = e.target?.result;
+      const result = base64String?.toString();
+      const newString = result?.slice(result.indexOf(',') + 1);
+      this.image = newString!;
+
+    };
+    reader.readAsDataURL(file);
   }
 }
 

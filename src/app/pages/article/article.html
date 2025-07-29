@@ -3,6 +3,9 @@
 
 <!-- Article Form and Articles List -->
 <div class="container mt-5">
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <div *ngIf="success" class="alert alert-success">{{ success }}</div>
+
     <app-add-articles (onAddArticle)="addArticle($event)"> </app-add-articles>
     <hr class="my-5" />
     <!-- <app-articles-items 

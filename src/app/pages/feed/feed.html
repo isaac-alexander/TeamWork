@@ -5,72 +5,31 @@
     <h2 class="mb-4 text-center fw-bold">Latest Posts</h2>
 
     <div *ngFor="let item of feeds"
-        class="card mb-4 shadow-sm rounded-4 bg-info bg-opacity-10 border border-info border-start-0 ">
+        class="card mb-3 shadow-sm rounded-4 bg-info bg-opacity-10 border border-info border-start-0 ">
         <div class="card-body">
-
             <!-- article content -->
-            <div *ngIf="item.article" class="mb-3">
-                <h5 class="card-title mb-2">{{ item.title }}</h5>
-                <p class="card-text text-muted">{{ item.article }}</p>
-                <p class="card-text text-primary">{{ item.createdOn }}</p>
-                <p class="card-text text-primary">{{ item.comments }}</p>
-                <app-add-article-comments (onAddComment)="addComment($event)"> </app-add-article-comments>
-                <h6 class="text-muted mb-2"> Comments </h6>
-                <div *ngFor="let comment of comments" class="mb-3">
-                    <h5 class="card-title mb-3">{{ comment.comment}}</h5>
+            <div *ngIf="item.article" class="">
+                <div class="card-content mb-4">
+                    <h5 class="card-title mb-2">{{ item.title }}</h5>
+                    <p class="card-text text-muted">{{ item.article }}</p>
+                    <p class="card-text text-primary">{{ formatDate(item.createdOn) }}</p>
                 </div>
-                <a type="submit" class="btn btn-primary mt-3"
-                    [routerLink]="['/articleDetails', item.article_id]">Article Details</a>
-            </div>
 
-            <!-- Edit Buttton  -->
-            <div class="d-flex justify-content-end gap-2 mt-3 mb-3">
-                <button class="btn btn-sm btn-outline-secondary" (click)="editPost()">Edit</button>
-                <!-- <button class="btn btn-sm btn-outline-danger" (click)="deletePost(item.article, item.type)">Delete</button> -->
-            </div>
-            <hr />
-
-            <!-- article comments section -->
-            <div *ngIf="item.article">
-
-
-                <!-- <ul class="list-group mb-3">
-                    <li class="list-group-item py-2 px-3 border-0" *ngFor="let comment of item.comments"> {{ comment }} </li>
-                </ul> -->
-
-
-
-
-
+                <a [routerLink]="['/articleDetails', item.article_id]">Article Details</a>
             </div>
 
         </div>
 
-        <div class="card-body">
-            <!-- gif content -->
+        <!-- <div class="card-body">
+            gif content
+            <div class="card-content mb-4">
             <div *ngIf="item.gif" class="mb-3 text-center">
                 <h5 class="card-title mb-2">{{ item.title }}</h5>
                 <img [src]="item.gif" class="img-fluid rounded shadow-sm" alt="GIF" />
                 <p class="card-text text-primary">{{ item.createdOn }}</p>
             </div>
+            </div>
 
-            <!-- gif comments section -->
-            <!-- <div>
-                <h6 class="text-muted mb-2"> Comments </h6>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item py-2 px-3 border-0" *ngFor="let comment of item.comments"> {{ comment }} </li>
-                </ul>
-
-                <div *ngIf="item.comments" class="mb-3">
-                    <h5 class="card-title mb-3">{{ item.comments }}</h5>
-                </div>
-
-                <app-add-gif-comments></app-add-gif-comments>
-
-                <button type="submit" class="btn btn-primary mt-3" [routerLink]="['/gifDetails', item.gif_id]">Gif Details</button>
-
-            </div> -->
-
-        </div>
+        </div> -->
     </div>
 </div>

@@ -19,8 +19,7 @@ export class ArticlesItems {
   
 
   constructor() {
-    const localArticle = localStorage.getItem('article')
-    const article = JSON.parse(localArticle!);
+    
   }
 
   updateArticle(article: any) {
@@ -31,7 +30,7 @@ export class ArticlesItems {
       content: this.content
     };
 
-    this.emitUpdateArticle.emit(updated);
+    // this.emitUpdateArticle.emit(updated);
   }
 
 }

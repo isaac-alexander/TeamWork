@@ -11,7 +11,7 @@ import { Header } from '../header/header';
 })
 export class Homepage implements OnInit {
   // boolean... true if role stored is ADMIN
-  isAdmin = false
+  isAdmin = false;
   fullName: string = '';
 
 

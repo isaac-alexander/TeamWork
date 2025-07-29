@@ -10,6 +10,13 @@ import { LogOut } from "../log-out/log-out";
   styleUrl: './header.css'
 })
 export class Header {
-  isAdmin = true
+  isAdmin = false;
+
+  ngOnInit() {
+    const user = localStorage.getItem('user')
+    const userObject = JSON.parse(user!);
+    this.isAdmin = userObject.jobRole.toLowerCase() === 'admin';
+
+  }
 
 }

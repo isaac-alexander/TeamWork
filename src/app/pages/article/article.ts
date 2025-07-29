@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { articleInterface } from '../../articleInterface';
 import { ArticleResponse } from '../../ArticleResponse';
 import { ArticleService } from '../../services/article.service';
 import { AddArticles } from "./addArticles/add-articles";
 import { Header } from '../header/header';
+import { newArticleInterface } from '../../newArticleInterface';
 
 
 @Component({
@@ -17,42 +17,46 @@ import { Header } from '../header/header';
 })
 export class Article {
 
-  article!: articleInterface;
-  articles: articleInterface[] = [];
+  article!: newArticleInterface;
+  articles: newArticleInterface[] = [];
+  error = '';
+  success = '';
+
 
   constructor(private articleService: ArticleService) { }
 
 
-  addArticle(article: articleInterface) {
+  addArticle(article: newArticleInterface) {
+
+    this.error = '';
+    this.success = '';
 
     this.articleService.postArticle(article).subscribe({
       next: (res: ArticleResponse) => {
 
-        localStorage.setItem('article', JSON.stringify(res.data));
-
         this.articles.push(article);
-        alert('Article posted successfully')
+        this.success = 'Article posted successfully';
       },
       error: (err) => {
-        console.error('Failed to post article:', err);
+        this.error = 'Failed to post article:';
       }
     });
   }
 
-  editArticle(article: articleInterface) {
-    this.articleService.updateArticle(article).subscribe({
-      next: (res) => {
+  // editArticle(article: articleInterface) {
+  //   this.articleService.updateArticle(article).subscribe({
+  //     next: (res) => {
 
-        const index = this.articles.findIndex(a => a.id === article.id);
-        if (index !== -1) {
-          this.articles[index] = { ...article };
-        }
-        alert('Article updated successfully');
-      },
-      error: (err) => {
-        console.error('Failed to update article:', err);
-      }
-    });
-  }
+  //       const index = this.articles.findIndex(a => a.id === article.id);
+  //       if (index !== -1) {
+  //         this.articles[index] = { ...article };
+  //       }
+  //       alert('Article updated successfully');
+  //     },
+  //     error: (err) => {
+  //       console.error('Failed to update article:', err);
+  //     }
+  //   });
+  // }
 
 }

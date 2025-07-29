@@ -1,4 +1,5 @@
 export interface commentInterface {
-    id?: number;
-    comment: string;
+    commentId?: number;
+    comment?: string;
+    authorID?: number;
 }
