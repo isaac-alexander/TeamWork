@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -12,7 +12,9 @@ import { Header } from "../header/header";
   templateUrl: './admin-create-account.html',
   styleUrl: './admin-create-account.css'
 })
-export class AdminCreateAccount {
+export class AdminCreateAccount implements OnInit {
+  isAdmin = true;
+  jobRole: string = '';
 
   firstname: string = '';
   lastname: string = '';
@@ -52,4 +54,14 @@ export class AdminCreateAccount {
       }
     },)
   }
+
+  ngOnInit() {
+    const user = localStorage.getItem('user')
+    const userObject = JSON.parse(user!);
+    this.jobRole = userObject.jobRole
+    if (this.jobRole !== 'admin') {
+      this.router.navigate(['/feed']);
+    } else (this.router.navigate(['/admin/create-account']))
+  }
 }
+

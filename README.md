@@ -43,9 +43,9 @@ ng serve
 4. **Visit http://localhost:4200 in your browser.**
 
 <p align="center">
-    <img src="\src\assets\Screenshot (82).png" width="350" title="Sign In">
-    <img src="\src\assets\Screenshot (81).png" width="350" title="Feeds">
-    <img src="\src\assets\Screenshot (79).png" width="350" title="Post Article">
-    <img src="\src\assets\Screenshot (80).png" width="350" title="Post Gif">
+    <img src="\src\assets\images\Screenshot (82).png" width="350" title="Sign In">
+    <img src="\src\assets\images\Screenshot (81).png" width="350" title="Feeds">
+    <img src="\src\assets\images\Screenshot (79).png" width="350" title="Post Article">
+    <img src="\src\assets\images\9Screenshot (80).png" width="350" title="Post Gif">
 </p>
 

@@ -6,6 +6,7 @@ import { Feed } from './pages/feed/feed';
 import { Article } from './pages/article/article';
 import { Gif } from './pages/gif/gif';
 import { ArticleDetails } from './pages/article/article-details/article-details';
+import { PageNotFound } from './pages/page-not-found/page-not-found';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'signin', pathMatch: 'full' },
@@ -16,4 +17,5 @@ export const routes: Routes = [
     { path: 'article', component: Article },
     { path: 'gif', component: Gif },
     { path: 'articleDetails/:id', component: ArticleDetails, title: 'Article Details Page' },
+    { path: '**', component: PageNotFound }   
 ];

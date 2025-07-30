@@ -1,0 +1,26 @@
+.full-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+}
+
+.error-container {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #f8f8f8;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error-container h1 {
+  font-size: 72px;
+  color: #e74c3c;
+  margin-bottom: 20px;
+}
+
+.error-container p {
+  font-size: 24px;
+  color: #555;
+}
