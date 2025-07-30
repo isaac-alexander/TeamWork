@@ -46,6 +46,6 @@ ng serve
     <img src="\src\assets\images\Screenshot (82).png" width="350" title="Sign In">
     <img src="\src\assets\images\Screenshot (81).png" width="350" title="Feeds">
     <img src="\src\assets\images\Screenshot (79).png" width="350" title="Post Article">
-    <img src="\src\assets\images\9Screenshot (80).png" width="350" title="Post Gif">
+    <img src="\src\assets\images\Screenshot (80).png" width="350" title="Post Gif">
 </p>
 
